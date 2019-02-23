@@ -1,1 +1,20 @@
-const path = require('path'); module.exports = {    entry: path.join(__dirname, 'src', 'app.js'),    output: {        path: path.join(__dirname, 'src', 'dist'),        filename: 'index.js'    },    module: {        rules: [{            test: /\.js$/,            loader: 'babel-loader',            exclude: '/node_modules/'        }]    } };
+// Webpack v4
+const path = require('path');
+module.exports = {
+    entry: { main: './src/index.js' },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            }
+        ]
+    }
+}
